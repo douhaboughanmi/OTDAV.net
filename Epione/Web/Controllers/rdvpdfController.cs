@@ -21,27 +21,19 @@ namespace Web.Controllers
         public ActionResult Index(string searching)
         {
             IEnumerable<rendezvou> all = us.GetAll();
-            ViewBag.result = all;
+
+
 
             if (searching != null)
-            { 
-              all = us.GetMany(x => x.etat.Equals(searching));
 
-            }
-            else
-            {
-        //   if (riskMin == null)
-              all = us.GetAll();
+                all = us.GetMany(x => x.etat.Contains(searching));
 
-            //else
-            //{
-                //int taux = Int32.Parse(riskMin);
 
-              //  all = rs.GetMany(x => x.tauxRisk < taux);
-            //}
-            }
+            ViewBag.result = all;
 
-            return View(all);
+
+            return View();
+
         }
 
         // GET: RiskHistory/Details/5
@@ -117,9 +109,9 @@ namespace Web.Controllers
         }
 
 
-        public ActionResult GenerateReport(int id)
+        public ActionResult GenerateReport()
         {
-            us.generatePDF(id);
+            us.generatePDF();
             return View();
         }
     }

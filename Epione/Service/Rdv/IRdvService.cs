@@ -10,6 +10,6 @@ namespace Service.Rdv
 {
   public  interface IRdvService:IService<rendezvou>
     {
-        void generatePDF(int id);
+        void generatePDF();
     }
 }

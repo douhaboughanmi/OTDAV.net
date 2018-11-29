@@ -22,12 +22,12 @@ namespace Service.Rdv
                 
         }
 
-        public void generatePDF(int id)
+        public void generatePDF()
         {
 
 
             var risk = (from rh in dbf.DataContext.rendezvous
-                        where(id==rh.id)
+                        where (rh.etat=="Validé")
                         select new
                         {
                             date = rh.date,

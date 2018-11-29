@@ -1,4 +1,4 @@
-﻿
+﻿@model Web.Models.RdvViewModel
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -12,9 +12,11 @@
 </head>
 <body>
     <div>
+        
         @using (Html.BeginForm("Index", "Rdvpdf", FormMethod.Get))
         {
             @Html.TextBox("searching")
+            
             <input type="submit" value="Search" />
         }
         <table border="2" class="table" cellpadding="7">
@@ -39,20 +41,20 @@
                         <td>@p.sujet</td>
                         <td>@p.desciption</td>
                         <td>@p.etat</td>
-                        <td>
-                            <div class="col-lg-3 action">
-                                <div class="row ">
-                                    @Html.ActionLink("GenerateReport", "GenerateReport", new { id = p.id })
-                                </div>
-
-                            </div>
-
-                        </td>
+                       
                     </tr>
                 }
             </tbody>
         </table>
-       
+@using (Html.BeginForm("GenerateReport", "Rdvpdf", FormMethod.Get))
+{
+        <div class="col-lg-3 action">
+            <div class="row ">
+                @Html.ActionLink("GenerateReport", "GenerateReport")
+            </div>
+
+        </div>
+}
 
     </div>
 </body>
