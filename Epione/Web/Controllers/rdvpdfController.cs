@@ -30,8 +30,8 @@ namespace Web.Controllers
             }
             else
             {
-         //   if (riskMin == null)
-           //     all = rs.GetAll();
+        //   if (riskMin == null)
+              all = us.GetAll();
 
             //else
             //{
