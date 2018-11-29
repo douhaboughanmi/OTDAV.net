@@ -1,0 +1,59 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("Index", "Rdvpdf", FormMethod.Get))
+        {
+            @Html.TextBox("searching")
+            <input type="submit" value="Search" />
+        }
+        <table border="2" class="table" cellpadding="7">
+            <thead>
+                <tr>
+                    <td>Identifiant</td>
+                    <th>Date</th>
+
+                    <th>Sujet</th>
+                    <th>Desciption</th>
+                    <th>Etat</th><th>id</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var p in ViewBag.result)
+                {
+                    <tr>
+                        <td>@p.id</td>
+                        <td>@p.date</td>
+
+                        <td>@p.sujet</td>
+                        <td>@p.desciption</td>
+                        <td>@p.etat</td>
+                        <td>
+                            <div class="col-lg-3 action">
+                                <div class="row ">
+                                    @Html.ActionLink("GenerateReport", "GenerateReport", new { id = p.id })
+                                </div>
+
+                            </div>
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+       
+
+    </div>
+</body>
+</html>

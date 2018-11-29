@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Chat home page</h2>
+
+@using (Html.BeginForm("StartChat","Home"))
+{
+
+    @Html.Label("Entrez votre nom")
+    @Html.TextBox("nom")
+    <input type="submit" value="ENTRER" />
+
+}
+
